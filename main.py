@@ -14,21 +14,23 @@ class volunteerForm:
 
         self.name=StringVar()
         ttk.Label(mainframe, text="Name :").grid(column=0, row=0)
-        name_entry = ttk.Entry(mainframe, width=14, textvariable=self.name)
-        name_entry.grid(column=1, row=0)
+        name_entry = ttk.Entry(mainframe, width=30, textvariable=self.name)
+        name_entry.grid(column=1, row=0, columnspan=3)
 
         self.email=StringVar()
         ttk.Label(mainframe, text="Email :").grid(column=0, row=1, sticky=E)
-        email_entry = ttk.Entry(mainframe, width=14,textvariable=self.email)
-        email_entry.grid(column=1, row=1)
+        email_entry = ttk.Entry(mainframe, width=30,textvariable=self.email)
+        email_entry.grid(column=1, row=1, columnspan=3)
 
         self.year=StringVar()
         ttk.Label(mainframe, text="Year :").grid(column=0, row=2, sticky=E)
-        year_entry = ttk.Entry(mainframe, width=14,textvariable=self.year)
-        year_entry.grid(column=1, row=2)
+        year_entry = ttk.Entry(mainframe, width=30,textvariable=self.year)
+        year_entry.grid(column=1, row=2,  columnspan=3)
 
+        errmsg=StringVar()
+        ttk.Label(mainframe, textvariable=errmsg,fg='red').grid(column=2, row=3)
         ttk.Button(mainframe, text="Register",command=self.registerVolunteer).grid(column=3, row=3, sticky=W)
-
+        errmsg='error'
 
         for child in mainframe.winfo_children():
             child.grid_configure(padx=5, pady=5)
