@@ -3,14 +3,22 @@ from tkinter import ttk
 global appName
 import pandas as pd
 appName = "Di@Tech-"
+
+class mainFrame():
+    def __init__(self,parent):
+        global mainframe
+        mainframe = ttk.Frame(parent, padding="3 3 12 12")
+        mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+        for child in mainframe.winfo_children():
+            child.grid_configure(padx=5, pady=5)
 class volunteerForm:
-    def __init__(self, root):
+    def __init__(self, parent):
 
         root.title(appName+"New Volunteer Sign Up")
-        mainframe = ttk.Frame(root, padding="3 3 12 12")
+        mainframe = ttk.Frame(parent, padding="3 3 12 12")
         mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-        root.columnconfigure(2, weight=1)
-        root.rowconfigure(5, weight=1)
+        parent.columnconfigure(2, weight=1)
+        parent.rowconfigure(5, weight=1)
 
         self.name=StringVar()
         ttk.Label(mainframe, text="Name :").grid(column=0, row=0)
@@ -44,8 +52,9 @@ class volunteerForm:
         print(volunteer_data)
         volunteer_data.to_csv('data/volunteers.csv',index=False)
 
-
-
+global root
 root = Tk()
-volunteerForm(root)
+mainFrame(root)
+volunteerForm(mainframe)
 root.mainloop()
+
