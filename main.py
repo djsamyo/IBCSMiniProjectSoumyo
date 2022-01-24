@@ -28,7 +28,7 @@ class volunteerForm:
         year_entry.grid(column=1, row=2,  columnspan=3)
 
         errmsg=StringVar()
-        ttk.Label(mainframe, textvariable=errmsg,fg='red').grid(column=2, row=3)
+        ttk.Label(mainframe, textvariable=errmsg).grid(column=2, row=3)
         ttk.Button(mainframe, text="Register",command=self.registerVolunteer).grid(column=3, row=3, sticky=W)
         errmsg='error'
 
