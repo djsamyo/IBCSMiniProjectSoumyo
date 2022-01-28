@@ -55,4 +55,4 @@ class volunteerForm:
                 messagebox.showinfo(message='Year is Invalid')
 
         else:
-            messagebox.showinfo(message='Inputs are blank')
+            messagebox.showinfo(message='Please Enter Valid Inputs')

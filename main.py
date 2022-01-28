@@ -20,7 +20,7 @@ class mainFrame():
         registerMenu.add_command(label="Volunteers", command=self.openVolunteer)
         registerMenu.add_command(label="Supervisors", command=self.openSupervisor)
 
-        menubar.add_cascade(label="Register", menu=registerMenu)
+        menubar.add_cascade(label="New", menu=registerMenu)
 
         parent.config(menu=menubar)
 

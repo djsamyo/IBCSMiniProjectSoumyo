@@ -7,7 +7,7 @@ import pandas as pd
 
 
 class supervisorForm:
-    def __init__(self, parent,root):
+    def __init__(self, parent, root):
         try:
             for widget in parent.winfo_children():
                 widget.destroy()
@@ -45,18 +45,26 @@ class supervisorForm:
             child.grid_configure(padx=5, pady=5)
 
     def registerVolunteer(self, *args):
-        volunteer_data = pd.read_csv('data/volunteers.csv')
+        volunteer_data = pd.read_csv('data/supervisors.csv')
         if self.name.get() and self.email.get():
             name = self.name.get()
             email = self.email.get()
+            spec = self.spec.get()
+            sID = self.getID(name, spec)
             try:
-                year = int(self.year.get())
+
                 print(volunteer_data)
-                volunteer_data.loc[len(volunteer_data.index)] = [name, email, year]
+                volunteer_data.loc[len(volunteer_data.index)] = [sID, name, email, spec]
                 print(volunteer_data)
-                volunteer_data.to_csv('data/volunteers.csv', index=False)
+                volunteer_data.to_csv('data/supervisors.csv', index=False)
             except:
                 messagebox.showinfo(message='Year is Invalid')
 
         else:
-            messagebox.showinfo(message='Inputs are blank')
+            messagebox.showinfo(message='Please Enter Valid Inputs')
+
+    def getID(self, name, spec):
+        name = list(name)
+        spec = list(spec)
+        id = spec[:3]+name[-1]
+        return id
