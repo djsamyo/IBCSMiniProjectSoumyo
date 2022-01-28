@@ -7,30 +7,41 @@ import pandas as pd
 
 
 class supervisorForm:
-    def __init__(self, parent):
-
-        mainframe = ttk.Frame(parent, padding="3 3 12 12")
-        mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+    def __init__(self, parent,root):
+        try:
+            for widget in parent.winfo_children():
+                widget.destroy()
+        except:
+            pass
+        root.title("Di@tech-Supervisor Form")
+        frame = ttk.Frame(parent, padding="3 3 12 12")
+        frame.grid(column=0, row=0, sticky=(N, W, E, S))
         parent.columnconfigure(2, weight=1)
         parent.rowconfigure(5, weight=1)
 
         self.name = StringVar()
-        ttk.Label(mainframe, text="Name :").grid(column=0, row=0)
-        name_entry = ttk.Entry(mainframe, width=30, textvariable=self.name)
+        ttk.Label(frame, text="Name :").grid(column=0, row=0, sticky=E)
+        name_entry = ttk.Entry(frame, width=30, textvariable=self.name)
         name_entry.grid(column=1, row=0, columnspan=3)
 
         self.email = StringVar()
-        ttk.Label(mainframe, text="Email :").grid(column=0, row=1, sticky=E)
-        email_entry = ttk.Entry(mainframe, width=30, textvariable=self.email)
+        ttk.Label(frame, text="Email :").grid(column=0, row=1, sticky=E)
+        email_entry = ttk.Entry(frame, width=30, textvariable=self.email)
         email_entry.grid(column=1, row=1, columnspan=3)
 
-        self.year = StringVar()
-        ttk.Label(mainframe, text="Year :").grid(column=0, row=2, sticky=E)
-        year_entry = ttk.Entry(mainframe, width=30, textvariable=self.year)
-        year_entry.grid(column=1, row=2, columnspan=3)
+        self.spec = StringVar()
+        ttk.Label(frame, text="Specialization :").grid(column=0, row=2, sticky=E)
+        spec = ttk.Combobox(frame, textvariable=self.spec)
+        spec.grid(column=1, row=2, columnspan=3, sticky=W)
+        spec['values'] = ("Teacher", "Assistant", "Club Member")
+        spec.state(["readonly"])
+        # self.year = StringVar()
+        # ttk.Label(frame, text="Year :").grid(column=0, row=2, sticky=E)
+        # year_entry = ttk.Entry(frame, width=30, textvariable=self.year)
+        # year_entry.grid(column=1, row=2, columnspan=3)
 
-        ttk.Button(mainframe, text="Register", command=self.registerVolunteer).grid(column=3, row=3, sticky=W)
-        for child in mainframe.winfo_children():
+        ttk.Button(frame, text="Register", command=self.registerVolunteer).grid(column=3, row=3, sticky=W)
+        for child in frame.winfo_children():
             child.grid_configure(padx=5, pady=5)
 
     def registerVolunteer(self, *args):
