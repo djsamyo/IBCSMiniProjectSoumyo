@@ -50,12 +50,9 @@ class supervisorForm:
             name = self.name.get()
             email = self.email.get()
             spec = self.spec.get()
-            sID = self.getID(name, spec)
             try:
+                volunteer_data.loc[len(volunteer_data.index)] = [len(volunteer_data.index), name, email, spec]
 
-                print(volunteer_data)
-                volunteer_data.loc[len(volunteer_data.index)] = [sID, name, email, spec]
-                print(volunteer_data)
                 volunteer_data.to_csv('data/supervisors.csv', index=False)
             except:
                 messagebox.showinfo(message='Year is Invalid')
@@ -63,8 +60,3 @@ class supervisorForm:
         else:
             messagebox.showinfo(message='Please Enter Valid Inputs')
 
-    def getID(self, name, spec):
-        name = list(name)
-        spec = list(spec)
-        id = spec[:3]+name[-1]
-        return id

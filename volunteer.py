@@ -48,7 +48,7 @@ class volunteerForm:
             try:
                 year = int(self.year.get())
                 print(volunteer_data)
-                volunteer_data.loc[len(volunteer_data.index)] = [name, email, year]
+                volunteer_data.loc[len(volunteer_data.index)] = [len(volunteer_data.index),name, email, year]
                 print(volunteer_data)
                 volunteer_data.to_csv('data/volunteers.csv', index=False)
             except:
