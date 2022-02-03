@@ -3,7 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from supervisors import supervisorForm
 from volunteer import volunteerForm
-
+from activities import activitiesForm
 global appName
 
 
@@ -17,10 +17,11 @@ class mainFrame():
         menubar = Menu(root)
 
         registerMenu = Menu(menubar, tearoff=0)
-        registerMenu.add_command(label="Volunteers", command=self.openVolunteer)
-        registerMenu.add_command(label="Supervisors", command=self.openSupervisor)
-
+        registerMenu.add_command(label="Volunteer", command=self.openVolunteer)
+        registerMenu.add_command(label="Supervisor", command=self.openSupervisor)
+        registerMenu.add_command(label="Activity", command=self.openActivity)
         menubar.add_cascade(label="New", menu=registerMenu)
+
 
         parent.config(menu=menubar)
 
@@ -29,7 +30,8 @@ class mainFrame():
 
     def openSupervisor(self):
         frame = supervisorForm(self.mainframe, root)
-
+    def openActivity(self):
+        frame = activitiesForm(self.mainframe,root)
 
 global root
 root = Tk()
