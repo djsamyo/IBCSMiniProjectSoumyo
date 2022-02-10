@@ -1,3 +1,16 @@
-id,name,location,time,supervisor
-0,Test,Quad,Lunch,asd
-1,test,PE HALL,All Day,asd
+id,name,location,time,supervisorID
+0,Soumyo,Presentation Hall,Lunch,1
+1,Testing,Quad,Lunch,1
+2,Soumyo,Presentation Hall,Day Before,1
+3,soumyo,Presentation Hall,Lunch,1
+4,soumyo,Presentation Hall,Lunch,1
+5,asd,Presentation Hall,Lunch,0
+6,Soumyo,Quad,Lunch,0
+7,Soumyo,PE HALL,Lunch,0
+8,asd,PE HALL,Lunch,0
+9,asd,Quad,Lunch,0
+10,asd,PE HALL,Lunch,0
+11,asd,Presentation Hall,Lunch,0
+12,asd,Presentation Hall,Day Before,0
+13,asd,Presentation Hall,Lunch,0
+14,asd,Presentation Hall,Lunch,0

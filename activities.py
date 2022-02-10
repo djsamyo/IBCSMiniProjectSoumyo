@@ -29,8 +29,17 @@ class activitiesForm:
         spec = ttk.Combobox(frame, textvariable=self.supervisor)
         spec.grid(column=1, row=2, columnspan=3, sticky=W)
         self.supervisor_data = pd.read_csv('data/supervisors.csv')
-        self.supervisorData = self.supervisor_data['name'].tolist()
-
+        self.supervisorName = self.supervisor_data['name'].tolist()
+        self.supervisorID=self.supervisor_data['id'].tolist()
+        self.supervisorCurrentActivity=self.supervisor_data['currentActivity'].tolist()
+        self.supervisorData=[]
+        for i in range(len(self.supervisorID)):
+            name=str(self.supervisorName[i])
+            id=str(self.supervisorID[i])
+            currentActivity=self.supervisorCurrentActivity[i]
+            if currentActivity != "None":
+                print(currentActivity)
+                self.supervisorData.append(id+"-"+name)
         self.supervisorDataTuple = tuple(self.supervisorData)
         print(self.supervisorDataTuple)
         spec['values'] = self.supervisorDataTuple
@@ -66,17 +75,20 @@ class activitiesForm:
         if self.name.get():
             name = self.name.get()
             supervisor = self.supervisor.get()
+            supervisor=supervisor.split("-")[0]
             time = self.time.get()
             location=self.location.get()
-            supervisor_data = pd.read_csv('data/supervisors.csv')
 
+            #
             try:
-                print(activities_data)
-                activities_data.loc[len(activities_data.index)] = [len(activities_data.index),name, location, time, supervisorID]
-                print(activities_data)
+                activities_data.loc[len(activities_data.index)] = [len(activities_data.index),name, location, time, supervisor]
+                print(self.supervisor_data)
                 activities_data.to_csv('data/activities.csv', index=False)
+                self.supervisor_data.iat[int(supervisor),4]=name
+                self.supervisor_data.to_csv('supervisors.csv',index=False)
+                print(self.supervisor_data)
             except:
-                messagebox.showinfo(message='Year is Invalid')
+                messagebox.showinfo(message='Invalid Inputs')
             messagebox.showinfo(message='Registered Successfully')
 
         else:
