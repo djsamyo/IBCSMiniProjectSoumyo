@@ -46,16 +46,14 @@ class supervisorForm:
 
     def registerVolunteer(self, *args):
         volunteer_data = pd.read_csv('data/supervisors.csv')
+        print(volunteer_data)
         if self.name.get() and self.email.get():
             name = self.name.get()
             email = self.email.get()
             spec = self.spec.get()
-            try:
-                volunteer_data.loc[len(volunteer_data.index)] = [len(volunteer_data.index), name, email, spec, 'None']
-
-                volunteer_data.to_csv('data/supervisors.csv', index=False)
-            except:
-                messagebox.showinfo(message='Year is Invalid')
+            volunteer_data.loc[len(volunteer_data.index)] = [len(volunteer_data.index), name, email, spec, 'None']
+            print(volunteer_data)
+            volunteer_data.to_csv('data/supervisors.csv', index=False)
             messagebox.showinfo(message='Registered Successfully')
         else:
             messagebox.showinfo(message='Please Enter Valid Inputs')

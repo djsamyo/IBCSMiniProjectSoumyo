@@ -4,6 +4,7 @@ from tkinter import messagebox
 from supervisors import supervisorForm
 from volunteer import volunteerForm
 from activities import activitiesForm
+from assignVolunteers import assignForm
 global appName
 
 
@@ -22,16 +23,19 @@ class mainFrame():
         registerMenu.add_command(label="Activity", command=self.openActivity)
         menubar.add_cascade(label="New", menu=registerMenu)
 
-
+        assignMenu = Menu(menubar, tearoff=0)
+        assignMenu.add_command(label="Volunteers", command=self.openAssign)
+        menubar.add_cascade(label="Assign", menu=assignMenu)
         parent.config(menu=menubar)
 
     def openVolunteer(self):
         frame = volunteerForm(self.mainframe, root)
-
     def openSupervisor(self):
         frame = supervisorForm(self.mainframe, root)
     def openActivity(self):
         frame = activitiesForm(self.mainframe,root)
+    def openAssign(self):
+        frame= assignForm(self.mainframe,root)
 
 global root
 root = Tk()

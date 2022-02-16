@@ -13,6 +13,7 @@ class activitiesForm:
                 widget.destroy()
         except:
             pass
+        self.parent=parent
         root.title('Di@tech-Activity Registration')
         frame = ttk.Frame(parent, padding="3 3 12 12")
         frame.grid(column=0, row=0, sticky=(N, W, E, S))
@@ -36,8 +37,9 @@ class activitiesForm:
         for i in range(len(self.supervisorID)):
             name=str(self.supervisorName[i])
             id=str(self.supervisorID[i])
+            print(i,self.supervisorID[i],self.supervisorName[i],self.supervisorCurrentActivity[i])
             currentActivity=self.supervisorCurrentActivity[i]
-            if currentActivity != "None":
+            if currentActivity == 'None':
                 print(currentActivity)
                 self.supervisorData.append(id+"-"+name)
         self.supervisorDataTuple = tuple(self.supervisorData)
@@ -78,19 +80,18 @@ class activitiesForm:
             supervisor=supervisor.split("-")[0]
             time = self.time.get()
             location=self.location.get()
-
             #
             try:
-                activities_data.loc[len(activities_data.index)] = [len(activities_data.index),name, location, time, supervisor]
+                self.actid=len(activities_data.index)
+                activities_data.loc[len(activities_data.index)] = [self.actid,name, location, time, supervisor]
                 print(self.supervisor_data)
                 activities_data.to_csv('data/activities.csv', index=False)
                 self.supervisor_data.iat[int(supervisor),4]=name
-                self.supervisor_data.to_csv('supervisors.csv',index=False)
+                self.supervisor_data.to_csv('data/supervisors.csv',index=False)
                 print(self.supervisor_data)
+                assignData=pd.read_csv("data/volunteersAssign.csv")
+                assignData.loc[len(assignData.index)] = [self.actid,"None","None","None","None","None"]
+                assignData.to_csv('data/volunteersAssign.csv', index=False)
             except:
                 messagebox.showinfo(message='Invalid Inputs')
             messagebox.showinfo(message='Registered Successfully')
-
-        else:
-            messagebox.showinfo(message='Please Enter Valid Inputs')
-
