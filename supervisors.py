@@ -13,7 +13,7 @@ class supervisorForm:
                 widget.destroy()
         except:
             pass
-        root.title("Di@tech-Supervisor Form")
+        root.title("Di@tech-Supervisor Registration")
         frame = ttk.Frame(parent, padding="3 3 12 12")
         frame.grid(column=0, row=0, sticky=(N, W, E, S))
         parent.columnconfigure(2, weight=1)

@@ -5,6 +5,6 @@ id,name,email,specialization,currentActivity
 3,Supervisor3,supervisor3@spam.com,Teacher,None
 4,Supervisor4,supervisor4@spam.com,Teacher,None
 5,Supervisor5,supervisor5@spam.com,Assistant,None
-6,Supervisor1,supervisor1@spam.com,Teacher,None
+6,Supervisor1,supervisor1@spam.com,Teacher,testact2
 7,Supervisor2,supervisor2@spam.com,Teacher,None
 8,Soumyo,soumyo@test.com,Assistant,None
