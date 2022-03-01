@@ -59,14 +59,14 @@ class assignForm:
         activity = int(activity.split('-')[0])
         if assignData.at[activity, 'student1'] == 'None':
             assignData.at[activity, 'student1'] = volunteer.split("-")[0]
-        if assignData.at[activity, 'student2'] == 'None':
+        elif assignData.at[activity, 'student2'] == 'None':
             assignData.at[activity, 'student2'] = volunteer.split("-")[0]
-        if assignData.at[activity, 'student3'] == 'None':
+        elif assignData.at[activity, 'student3'] == 'None':
             assignData.at[activity, 'student3'] = volunteer.split("-")[0]
-        if assignData.at[activity, 'student4'] == 'None':
+        elif assignData.at[activity, 'student4'] == 'None':
             assignData.at[activity, 'student4'] = volunteer.split("-")[0]
-        if assignData.at[activity, 'student5'] == 'None':
+        elif assignData.at[activity, 'student5'] == 'None':
             assignData.at[activity, 'student5'] = volunteer.split("-")[0]
         else:
-            messagebox.showinfo(message='5 Volunteers Already Aassigned')
+            messagebox.showinfo(message='5 Volunteers Already Assigned')
         assignData.to_csv('data/volunteersAssign.csv', index=False)
